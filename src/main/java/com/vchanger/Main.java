@@ -85,7 +85,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Export.createExcel("Data.xlsx","Sheet",Main.func(hashMap,finalData));
+                    Export.createExcel("Data.xlsx","Sheet",finalData);
                     System.out.println("Создан");
                 } catch (Exception ex) {
                     String errorMessage = "Ошибка при экспорте!!!";
