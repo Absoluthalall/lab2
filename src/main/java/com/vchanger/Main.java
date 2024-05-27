@@ -17,19 +17,6 @@ import java.util.Map;
 public class Main {
     static HashMap<String,double[]> hashMap;
     static HashMap<String,Double> finalData = new HashMap<>();
-    public static HashMap<String,Double> func(HashMap<String, double[]> hashMap, HashMap<String, Double> finalData){
-        ArithmeticMean.calculate(hashMap,finalData);
-        Cov.calculate(hashMap,finalData);
-        GeometricMean.calculate(hashMap,finalData);
-        Maximum.calculate(hashMap,finalData);
-        Minimum.calculate(hashMap,finalData);
-        NumberOfValues.calculate(hashMap,finalData);
-        Range.calculate(hashMap,finalData);
-        StandardDeviation.calculate(hashMap,finalData);
-        Variance.calculate(hashMap,finalData);
-        Variation.calculate(hashMap,finalData);
-        return finalData;
-    }
     public static void main(String[] args) {
         JFrame frame = new JFrame("Excel Data Importer");
         frame.setSize(400, 300);
@@ -64,7 +51,8 @@ public class Main {
                         XSSFSheet selectedSheet = workbook.getSheet(tf.getText());
                         Input input = new Input(selectedSheet);
                         hashMap = input.getData();
-                        finalData = func(hashMap,finalData);
+                        Colculations colculation = new Colculations(hashMap,finalData);
+                        finalData = colculation.getData();
                         for (Map.Entry<String, double[]> entry : hashMap.entrySet()) {
                             String key = entry.getKey();
                             double[] values = entry.getValue();
